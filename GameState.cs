@@ -10,6 +10,7 @@ namespace MyGame
 {
     class GameState
     {
+        Board board = new Board();
         public GameState()
         {
 
@@ -22,7 +23,7 @@ namespace MyGame
 
         public void Draw(GameTime gameTime)
         {
-
+            board.Draw();
         }
     }
 }
