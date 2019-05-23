@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 
 namespace MyGame.Support
@@ -9,6 +10,10 @@ namespace MyGame.Support
         Texture2D image;
         public Vector2 Position;
         public Vector2 size;
+        public bool IsPressedRight = false;
+        public bool IsPressedLeft = false;
+        public bool IsPressedDown = false;
+        public bool IsPressedUp = false;
 
         public Texture(String image, Vector2 position, Vector2 size)
         {
@@ -20,11 +25,7 @@ namespace MyGame.Support
         public Vector2 MinBound { get => Position - (size * 0.5f); }
         public Vector2 MaxBound { get => Position + (size * 0.5f); }
 
-        public void Update(Vector2 deltaTranslate, Vector2 deltaScale)
-        {
-            Position += deltaTranslate;
-            size += deltaScale;
-        }
+
 
         public void Draw()
         {
