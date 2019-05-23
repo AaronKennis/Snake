@@ -9,9 +9,14 @@ namespace MyGame
 {
     class Appel : Support.Texture
     {
-        public Appel(Vector2 position) : base("appel", position, new Vector2(0.111f))
-        {
+        public int X;
+        public int Y;
 
+        public Appel(int x, int y) : base("appel", new Vector2(), new Vector2(Board.Scale))
+        {
+            Position = Board.getScreenPos(x, y);
+            X = x;
+            Y = y;
         }
 
     }
