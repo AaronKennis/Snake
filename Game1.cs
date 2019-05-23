@@ -12,6 +12,9 @@ namespace MyGame
     /// </summary>
     public class Game1 : Game
     {
+        Random random = new Random();
+
+
         public static GraphicsDeviceManager sGraphics;
         public static SpriteBatch sSpriteBatch;
         public static ContentManager sContent;
@@ -79,6 +82,8 @@ namespace MyGame
 
             gameState.Update(gameTime);
             base.Update(gameTime);
+
+
         }
 
         /// <summary>

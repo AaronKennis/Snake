@@ -10,6 +10,12 @@ namespace MyGame
 {
     class GameState
     {
+        SnakeHead snakehead = new SnakeHead(new Vector2(0.0f, 0f)) ;
+
+        public static Random random = new Random();
+        Appel appel = new Appel(new Vector2(-1 + (float)(random.NextDouble() * 2), -1 + (float)(random.NextDouble() * 2)));
+
+
         public GameState()
         {
 
@@ -17,12 +23,13 @@ namespace MyGame
 
         public void Update(GameTime gameTime)
         {
-
+            snakehead.Update(gameTime);
         }
 
         public void Draw(GameTime gameTime)
         {
-
+            snakehead.Draw();
+            appel.Draw();
         }
     }
 }
