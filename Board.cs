@@ -11,13 +11,17 @@ namespace MyGame
     {
         List<List<Cell>> cells = new List<List<Cell>>();
 
+        const int Width = 23;
+        const int Height = 19;
+        const float Scale = 0.111f;
+
         public Board()
         {
-            for (int x = 0; x < 23; x++)
+            for (int x = 0; x < Width; x++)
             {
                 cells.Add(new List<Cell>());
 
-                for (int y = 0; y < 19; y++)
+                for (int y = 0; y < Height; y++)
                 {
                     cells[x].Add(new Cell(x, y));
                 }
@@ -35,7 +39,7 @@ namespace MyGame
 
         public static Vector2 getScreenPos(int x, int y)
         {
-            return new Vector2(-1.2f + x * 0.111f, -1.0f + 0.111f / 2 + y * 0.111f);
+            return new Vector2(-1.2f + x * Scale, -1.0f + Scale / 2 + y * Scale);
         }
     }
 }
