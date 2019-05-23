@@ -15,6 +15,7 @@ namespace MyGame
         public static Random random = new Random();
         Appel appel = new Appel(new Vector2(-1 + (float)(random.NextDouble() * 2), -1 + (float)(random.NextDouble() * 2)));
 
+        Board board = new Board();
 
         public GameState()
         {
@@ -28,8 +29,10 @@ namespace MyGame
 
         public void Draw(GameTime gameTime)
         {
-            snakehead.Draw();
+            board.Draw();
             appel.Draw();
+            snakehead.Draw();
+            
         }
     }
 }
