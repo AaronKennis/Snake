@@ -10,12 +10,13 @@ namespace MyGame
 {
     class GameState
     {
+        Board board = new Board();
         SnakeHead snakehead = new SnakeHead(new Vector2(0.0f, 0f)) ;
 
         public static Random random = new Random();
-        Appel appel = new Appel(new Vector2(-1 + (float)(random.NextDouble() * 2), -1 + (float)(random.NextDouble() * 2)));
+        Appel appel = new Appel(random.Next(Board.Width), random.Next(Board.Height));
 
-        Board board = new Board();
+        
 
         public GameState()
         {
