@@ -39,7 +39,7 @@ namespace MyGame
                 {
                     Score++;
                     RemoveApples = true;
-                    snakebody.Add(new SnakeBody(snakehead.Position));
+                    //snakebody.Add(new SnakeBody(snakehead.Position));
                 }
             }
 
