@@ -14,7 +14,7 @@ namespace MyGame
         SnakeHead snakehead = new SnakeHead(new Vector2(0.0f, 0f)) ;
 
         public static Random random = new Random();
-        Appel appel = new Appel(random.Next(Board.Width), random.Next(Board.Height));
+       
 
 
         List<SnakeBody> snakebody = new List<SnakeBody>();
