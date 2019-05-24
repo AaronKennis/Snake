@@ -12,8 +12,8 @@ namespace MyGame
         List<List<Cell>> cells = new List<List<Cell>>();
 
         public const int Width = 23;
-        public const int Height = 19;
-        public const float Scale = 0.111f;
+        public const int Height = 18;
+        public const float Scale = 0.101f;
 
         public Board()
         {

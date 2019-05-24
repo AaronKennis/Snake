@@ -12,7 +12,7 @@ namespace MyGame
     {
         
 
-        public SnakeHead(Vector2 position) : base("snake head", position, new Vector2(0.111f))
+        public SnakeHead(Vector2 position) : base("snake head", position, new Vector2(Board.Scale))
         {
 
         }

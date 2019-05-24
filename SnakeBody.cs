@@ -9,7 +9,7 @@ namespace MyGame
 {
     class SnakeBody : Support.Texture
     {
-        public SnakeBody(Vector2 position) : base("snake body", position, new Vector2(0, 111f))
+        public SnakeBody(Vector2 position) : base("snake body", position, new Vector2(Board.Scale))
         {
 
         }
