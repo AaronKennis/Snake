@@ -33,6 +33,22 @@ namespace MyGame
         {
             snakehead.Update(gameTime);
 
+            foreach(var body in snakebody)
+            {
+                if (snakehead.Collides(body))
+                {
+                    snakehead.Position = new Vector2(0f, 0f);
+                    snakebody.Clear();
+                    Score = 0;
+                }
+            }
+            if (Support.Camera.GetCollision(snakehead) != Support.CollisionStatus.Inside)
+            {
+                snakehead.Position = new Vector2(0f, 0f);
+                snakebody.Clear();
+                Score = 0;
+            }
+
             bool RemoveApples = false;
             foreach(var appel in appels)
             {
