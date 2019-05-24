@@ -12,17 +12,16 @@ namespace MyGame
     {
         Board board = new Board();
         SnakeHead snakehead = new SnakeHead(new Vector2(0.0f, 0f)) ;
-        
-
 
         public static Random random = new Random();
-     
+       
+
 
         List<SnakeBody> snakebody = new List<SnakeBody>();
         public int Score = 0;
-   
-        List<Appel> appels = new List<Appel>();
 
+        List<Appel> appels = new List<Appel>();
+        
 
         public GameState()
         {
@@ -33,39 +32,38 @@ namespace MyGame
         {
             snakehead.Update(gameTime);
 
-            foreach(var body in snakebody)
-            {
-                if (snakehead.Collides(body))
-                {
-                    snakehead.Position = new Vector2(0f, 0f);
-                    snakebody.Clear();
-                    Score = 0;
-                }
-            }
-            if (Support.Camera.GetCollision(snakehead) != Support.CollisionStatus.Inside)
-            {
-                snakehead.Position = new Vector2(0f, 0f);
-                snakebody.Clear();
-                Score = 0;
-            }
-
             bool RemoveApples = false;
             foreach(var appel in appels)
             {
                 if (snakehead.Collides(appel))
                 {
                     Score++;
-
                     RemoveApples = true;
                     snakebody.Add(new SnakeBody(snakehead.Position));
                 }
             }
-            if(RemoveApples)
+
+            if (RemoveApples)
             {
                 appels.Clear();
                 appels.Add(new Appel(random.Next(Board.Width), random.Next(Board.Height)));
             }
 
+            foreach(var body in snakebody)
+            {
+               if (snakehead.Collides(body))
+               {
+                   snakehead.Position = new Vector2(0.0f, 0f);
+                   snakebody.Clear();
+                   Score = 0;
+                }
+            }
+            if (Support.Camera.GetCollision(snakehead) != Support.CollisionStatus.Inside)
+            {
+                snakehead.Position = new Vector2(0.0f, 0f);
+                snakebody.Clear();
+                Score = 0;
+            }
         }
 
         public void Draw(GameTime gameTime)
@@ -75,16 +73,12 @@ namespace MyGame
             {
                 appel.Draw();
             }
-            Support.Font.PrintStatus("score : " + Score.ToString(), Color.Black);
+            Support.Font.PrintStatus("score: " + Score.ToString(), Color.Black);
             snakehead.Draw();
             foreach(var body in snakebody)
             {
                 body.Draw();
             }
-            
-            
         }
-
-        
     }
 }
