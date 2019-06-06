@@ -11,10 +11,21 @@ namespace MyGame
     class GameState
     {
         Board board = new Board();
+ bettersnakepos
         
         int previousposx;
         int previousposy;
         
+
+        backgroundS backgroundS = new backgroundS();
+        backgroundN backgroundN = new backgroundN();
+        backgroundA backgroundA = new backgroundA();
+        backgroundK backgroundK = new backgroundK();
+        backgroundE backgroundE = new backgroundE();
+        backgroundsnake backgroundsnake = new backgroundsnake();
+        backgroundsnake2 backgroundsnake2 = new backgroundsnake2();
+        SnakeHead snakehead = new SnakeHead(new Vector2(0.0f, 0f)) ;
+ master
 
         public static Random random = new Random();
 
@@ -99,6 +110,13 @@ namespace MyGame
 
         public void Draw(GameTime gameTime)
         {
+            backgroundS.Draw();
+            backgroundN.Draw();
+            backgroundA.Draw();
+            backgroundK.Draw();
+            backgroundE.Draw();
+            backgroundsnake.Draw();
+            backgroundsnake2.Draw();
             board.Draw();
             foreach(var appel in appels)
             {
