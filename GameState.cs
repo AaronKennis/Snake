@@ -11,13 +11,16 @@ namespace MyGame
     class GameState
     {
         Board board = new Board();
-        SnakeHead snakehead = new SnakeHead(new Vector2(0.0f, 0f)) ;
+        
+        int previousposx;
+        int previousposy;
+        
 
         public static Random random = new Random();
-       
 
-
+        SnakeHead snakehead = new SnakeHead();
         List<SnakeBody> snakebody = new List<SnakeBody>();
+
         public int Score = 0;
 
         List<Appel> appels = new List<Appel>();
@@ -26,23 +29,43 @@ namespace MyGame
         public GameState()
         {
             appels.Add(new Appel(random.Next(Board.Width), random.Next(Board.Height)));
+            
         }
 
         public void Update(GameTime gameTime)
         {
-            snakehead.Update(gameTime);
+            previousposx = snakehead.X;
+            previousposy = snakehead.Y;
+
+            if (snakehead.Update(gameTime))
+            {
+                foreach(var part in snakebody)
+                {
+                    int previousPartX = part.X;
+                    int previousPartY = part.Y;
+
+                    part.UpdatePos(previousposx, previousposy);
+                    previousposx = previousPartX;
+                    previousposy = previousPartY;
+                }
+            }
+
+            
 
             bool RemoveApples = false;
-            foreach(var appel in appels)
+            bool RemoveBody = false;
+
+            foreach (var appel in appels)
             {
                 if (snakehead.Collides(appel))
                 {
                     Score++;
                     RemoveApples = true;
-                    //snakebody.Add(new SnakeBody(snakehead.Position));
+                    snakebody.Add(new SnakeBody(previousposx, previousposy));
                 }
             }
 
+            
             if (RemoveApples)
             {
                 appels.Clear();
@@ -51,16 +74,24 @@ namespace MyGame
 
             foreach(var body in snakebody)
             {
-               if (snakehead.Collides(body))
-               {
-                   snakehead.Position = new Vector2(0.0f, 0f);
-                   snakebody.Clear();
-                   Score = 0;
+                
+                if (snakehead.Collides(body))
+                {
+                    RemoveBody = true;
                 }
+                
             }
-            if (Support.Camera.GetCollision(snakehead) != Support.CollisionStatus.Inside)
+            if (RemoveBody)
             {
-                snakehead.Position = new Vector2(0.0f, 0f);
+                snakebody.Clear();
+                snakehead.Reset();
+                Score = 0;
+            }
+            
+
+            if (snakehead.X >= Board.Width || snakehead.Y >= Board.Height)
+            {
+                snakehead.Reset();
                 snakebody.Clear();
                 Score = 0;
             }
