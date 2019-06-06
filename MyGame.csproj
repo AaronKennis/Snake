@@ -42,6 +42,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Appel.cs" />
+    <Compile Include="backgroundA.cs" />
+    <Compile Include="backgroundE.cs" />
+    <Compile Include="backgroundK.cs" />
+    <Compile Include="backgroundN.cs" />
+    <Compile Include="backgroundS.cs" />
+    <Compile Include="backgroundsnake.cs" />
+    <Compile Include="backgroundsnake2.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="GameState.cs" />
