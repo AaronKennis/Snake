@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,22 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
-    class SnakeBody : Support.Texture
+    public class SnakeBody : Support.Texture
     {
-        public SnakeBody(Vector2 position) : base("snake body", position, new Vector2(Board.Scale))
-        {
+        public int X;
+        public int Y;
 
+        public SnakeBody(int x,int y) : base("snake body", Board.getScreenPos(x,y), new Vector2(0.072f))
+        {
+            X = x;
+            Y = y;
+        }
+
+        public void UpdatePos(int x, int y)
+        {
+            Position = Board.getScreenPos(x, y);
+            X = x;
+            Y = y;
         }
     }
 }
